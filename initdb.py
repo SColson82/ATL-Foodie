@@ -1,4 +1,4 @@
-from atl-foodie-page.app import db
+from ATL_Foodie.app import db
 
 # db.drop_all()
 db.create_all()
