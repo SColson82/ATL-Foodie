@@ -3,11 +3,11 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
-from models import create_classes
+# from models import create_classes
 # import config
 
 from flask import Flask, jsonify, render_template, redirect
-from sqlalchemy.orm.query import _ColumnEntity
+# from sqlalchemy.orm.query import _ColumnEntity
 
 
 # # Database Setup
@@ -26,25 +26,23 @@ from sqlalchemy.orm.query import _ColumnEntity
 # Flask Setup
 app = Flask(__name__)
 
-URI = 'postgres://vbynbwqmhuehyr:52b5911eb7ae6372b4a883f471cdd20abcb046cafa3cda003c4dd225817fe760@ec2-34-233-105-94.compute-1.amazonaws.com:5432/d7g3pajuot26v2'
-URL = 'https://atl-foodie-page.herokuapp.com/'
+# URI = 'postgres://vbynbwqmhuehyr:52b5911eb7ae6372b4a883f471cdd20abcb046cafa3cda003c4dd225817fe760@ec2-34-233-105-94.compute-1.amazonaws.com:5432/d7g3pajuot26v2'
+# URL = 'https://atl-foodie-page.herokuapp.com/'
 
-app.config[URI] = os.environ.get(
-    URL, '')  # or "sqlite:///db.sqlite"
+# app.config[URI] = os.environ.get(
+#     URL, '')  # or "sqlite:///db.sqlite"
 
-# Remove tracking modifications
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# # Remove tracking modifications
+# app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = sqlalchemy(app)
-atlFood = create_classes(db)
+# db = sqlalchemy(app)
+# atlFood = create_classes(db)
 
 # Flask Routes
 
 
 @app.route("/")
 def home():
-    print("rendering homepage")
-    # Return template and data
     return render_template("index.html")
 
 
@@ -68,16 +66,16 @@ def ratings():
     return render_template("ratings.html")
 
 
-@app.route("/categories")
-def categories():
-    # Create our session (link) from Python to the DB
-    session = Session(engine)
+# @app.route("/categories")
+# def categories():
+#     # Create our session (link) from Python to the DB
+#     session = Session(engine)
 
-    # Query all passengers
-    results = session.query(Restaurant_info.restaurant, Restaurant_info.boro, Restaurant_info.phone, Restaurant_info.cuisine,
-                            Restaurant_info.latitude, Restaurant_info.longitude, Restaurant_info.violationdesc).all()
+#     # Query all passengers
+#     results = session.query(Restaurant_info.restaurant, Restaurant_info.boro, Restaurant_info.phone, Restaurant_info.cuisine,
+#                             Restaurant_info.latitude, Restaurant_info.longitude, Restaurant_info.violationdesc).all()
 
-    session.close()
+#     session.close()
 
     # # Create a dictionary from the row data and append to a list of all_passengers
     # categories_info = []
