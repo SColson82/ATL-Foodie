@@ -1,6 +1,8 @@
 // Save filepath of json file
-const url = "https://github.com/SColson82/ATL-Foodie/tree/master/templates/Resources/categories.json";
+const url = "Resources/categories.json";
 
+// Create data promise
+const dataPromise = d3.json(url);
 
 // access data in json file
 d3.json(url).then(function(data) {
@@ -90,7 +92,6 @@ function rotate() {
       for (let i=0; i<textSplit.length; i++) {
         returnString += `${textSplit[i]} <br>`
       };
-      console.log(returnString);
       return returnString;
     } else {
       return sector.label;
