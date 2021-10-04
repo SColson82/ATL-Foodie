@@ -1,5 +1,5 @@
 // Save filepath of json file
-const url = "/templates/Resources/categories.json";
+const url = "https://github.com/SColson82/ATL-Foodie/tree/master/templates/Resources/categories.json";
 
 
 // access data in json file
