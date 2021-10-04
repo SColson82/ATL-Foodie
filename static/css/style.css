@@ -34,7 +34,7 @@ body {
 }
 
 .link:hover {
-    color: rgb(111, 34, 50,1);
+    color: rgba(111, 34, 50,1);
 }
 
 p {
@@ -126,31 +126,6 @@ p {
         border-bottom-color: currentColor;
         border-top: none;
       }
-      .panel2 {
-        color: yellow;
-      }
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 .container {
@@ -158,65 +133,10 @@ p {
     
 }
 
-.box {
-    background-color: #EBF5DF; 
-    min-height: 500px;
-}
-/* h1 { */
-    /* text-align: center; */
-    /* color:rgb(218, 152, 76); */
-    /* background-color: black; */
-/* } */
-
 h3 {
     text-align: center;
 }
 
-h4.landing {
-    text-align: center;
-    color: white;    
-}
-
-h4.landing:hover {
-  
-    color: #ffeac7;  
-}
-
-h5.landing {
-    text-align: center;
-    color: white;    
-}
-
-h6.landing {
-    text-align: center;
-    color: white;
-  
-}
-
-/* IMG.displayed {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 2%;
-    max-width: 600px;
-     } */
-
-
-IMG.panel {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2%; 
-    padding-top: 2%;
-    width: 150px;
-    height: 150px;
-    z-index: 2;
-    
-
-}
-
-IMG.panel:hover {
-  transform: scale(1.2);
-    
-
+#restaurants.h5 {
+    font-style:italic;
 }
