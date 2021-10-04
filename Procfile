@@ -1,1 +1,1 @@
-web: gunicorn atl-foodie-page.app:app
+web: gunicorn app:app
