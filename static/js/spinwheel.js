@@ -132,33 +132,35 @@ var dropdown = d3.select("#selDataset2");
   init();
 
   dropdown.on("change", function() {
-    d3.selectAll("h5").remove();
+    if (d3.select(this).property("value") != "ignore") {
+      d3.selectAll("h5").remove();
 
-    //get restaurants info from json file
-    d3.json("Resources/yelp_atl_restaurants.json").then((restData) => {
-        let catList = Object.entries(restData.categories);
-        let nameList = Object.entries(restData.name);
-        let type = d3.select(this).property("value");
-        let restList = [];
+      //get restaurants info from json file
+      d3.json("Resources/yelp_atl_restaurants.json").then((restData) => {
+          let catList = Object.entries(restData.categories);
+          let nameList = Object.entries(restData.name);
+          let type = d3.select(this).property("value");
+          let restList = [];
 
-        for (let i=0; i<catList.length; i++) {
-          if (catList[i][1].includes(type)) {
-            restList.push(nameList[i][1]);
-          }
-        };
+          for (let i=0; i<catList.length; i++) {
+            if (catList[i][1].includes(type)) {
+              restList.push(nameList[i][1]);
+            }
+          };
 
-        displayList = [];
+          displayList = [];
 
-        for (let i=0; i<5; i++) {
-          var random = Math.floor(Math.random() * restList.length);
-          while (displayList.includes(restList[random])) {
+          for (let i=0; i<5; i++) {
             var random = Math.floor(Math.random() * restList.length);
-          }
-          displayList.push(restList[random])
-          d3.select("#restaurants").append("h5").text(`${restList[random]}`).style("color", "black");
-        };
+            while (displayList.includes(restList[random])) {
+              var random = Math.floor(Math.random() * restList.length);
+            }
+            displayList.push(restList[random])
+            d3.select("#restaurants").append("h5").text(`${restList[random]}`).style("color", "black");
+          };
 
-    })    
+      })  
+    }  
   });
 
   

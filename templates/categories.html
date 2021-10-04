@@ -14,7 +14,7 @@
         <nav class="navbar navbar-dark bg-dark">
             <a class="navbar-brand" href="../index.html">ATL Foodie</a>
                   <div class="nav">
-                      <a class="nav-item nav-link" href="categories.html">Categories</a>
+                      <a class="nav-item nav-link" href="categories.html">Cuisines</a>
                       <a class="nav-item nav-link" href="ratings.html">Ratings</a>
                       <a class="nav-item nav-link" href="map.html">Map</a>
                       <a class="nav-item nav-link" href="prices.html">Prices</a>
@@ -25,7 +25,7 @@
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <div class="row header-row r1">
-                    <h1 class="display-1 text-center">Categories</h1>
+                    <h1 class="display-1 text-center">Cuisines</h1>
                     <h1 class="text-center">What is your food fortune for the day? </h1>
                     <h3>Let fate decide...</h3>
                 </div>
@@ -38,11 +38,12 @@
                     </div>
                     <div class="col-md-4">
                         <h4>Types of Cuisines</h4>
-                        <select id="selDataset2"></select>
+                        <select id="selDataset2">
+                          <option value="ignore">Select an Option</option>
+                        </select>
                         <hr>
                         <h4 class="panel-title">Restaurant Suggestions</h4>
                         <div id="restaurants"></div>
-                        <a class="nav-link"  href="../find.html">Click here to find your Restaurant</a>
                     </div>
                 </div>
             </div>
