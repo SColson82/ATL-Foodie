@@ -1,36 +1,40 @@
+// Save filepath of json file
+const url = "../../templates/Resources/categories.json";
 
 
+// access data in json file
+d3.json(url).then(function(data) {
+  var selectorLabels = Object.values(data.Category);
 
-//define different colors and sections of the wheel
-const sectors = [
-  {color:"#ee1c24", label:"Pizza", textFontSize : 16},
-  {color:"#3cb878", label:"Chinese", textFontSize : 16},
-  {color:"#f6989d", label:"American", textFontSize : 16},
-  {color:"#00aef0", label:"European", textFontSize : 16},
-  {color:"#f26522", label:"Japanese", textFontSize : 16},
-  {color:"#000000", label:"BLANK", textFontSize : 16}, 
-  {color:"#e70697", label:"Soup/Salad/Sandwich", textFontSize : 9,},
-  {color:"#88d498", label:"Vegan/Vegetarian", textFontSize : 16},
-  {color:"#f6989d", label:"Thai", textFontSize : 16},
-  {color:"#ee1c24", label:"Mexican", textFontSize : 16},
-  {color:"#3cb878", label:"Latin American", textFontSize : 10}, 
-  {color:"#f26522", label:"African", textFontSize : 16},
-  {color:"#a186be", label:"Korean", textFontSize : 16},
-  {color:"#88d498", label:"Italian", textFontSize : 16},
-  {color:"#00aef0", label:"Irish", textFontSize : 16},
-  {color:"#ee1c24", label:"Mediterranean", textFontSize : 10},
-  {color:"#f6989d", label:"Caribbean", textFontSize : 16},
-  {color:"#f26522", label:"French", textFontSize : 16},
-  {color:"#3cb878", label:"Tex-mex", textFontSize : 16},
-  {color:"#165baa", label:"Seafood", textFontSize : 16},
-  {color:"#a186be", label:"Spanish", textFontSize : 16},
-  {color:"#88d498", label:"Chicken", textFontSize : 16},
-  {color:"#00aef0", label:"Southeast Asian", textFontSize : 10},
-  {color:"#f4a261", label:"Jewish/Kosher", textFontSize : 10},
-  {color:"#e9c46a", label:"Middle Eastern", textFontSize : 10},
-  {color:"#f4a261", label:"BBQ/Steakhouse", textFontSize : 8},
-  {color:"#f26522", label:"Australian", textFontSize : 16},
-]
+  var sectors = [];
+
+  //define different colors and sections of the wheel
+  for (let i=0; i<selectorLabels.length; i++) {
+    sectors.push({
+      color: colorPicker(i), 
+      label: selectorLabels[i], 
+      textFontSize: 14})
+  };
+
+  function colorPicker(i) {
+    if (i % 7 === 1) {
+      return "#007474";
+    } else if (i % 7 === 2) {
+      return "#de3163";
+    } else if (i % 7 === 3) {
+      return "#d73b3e";
+    } else if (i % 7 === 4) {
+      return "#0014a8";
+    } else if (i % 7 === 5) {
+      return "#ff6961";
+    } else if (i % 7 === 6) {
+      return "#6a5acd";
+    } else if (i % 7 === 0) {
+      return "#ff69b4";
+    } else {
+      return "black";
+    }
+  }
 
 
 const rand = (m, M) => Math.random() * (M - m) + m;
@@ -64,7 +68,7 @@ function drawSector(sector, i) {
   ctx.rotate(ang + arc / 2);
   ctx.textAlign = "right";
   ctx.fillStyle = "#fff";
-  ctx.font = "bold 20px sans-serif";
+  ctx.font = "bold 17px sans-serif";
   ctx.fillText(sector.label, rad - 10, 10);
   //
   ctx.restore();
@@ -74,8 +78,24 @@ function rotate() {
   const sector = sectors[getIndex()];
   //console.log("sector", sector)
   ctx.canvas.style.transform = `rotate(${ang - PI / 2}rad)`;
-  EL_spin.textContent = !angVel ? "SPIN" : sector.label;
+  EL_spin.textContent = lineNum();
   EL_spin.style.background = sector.color;
+
+  function lineNum() {
+    if (!angVel) {
+      return "SPIN";
+    } else if (sector.label.split(" ")[1]) {
+      let textSplit = sector.label.split(" ");
+      let returnString = "";
+      for (let i=0; i<textSplit.length; i++) {
+        returnString += `${textSplit[i]} <br>`
+      };
+      console.log(returnString);
+      return returnString;
+    } else {
+      return sector.label;
+    }
+  }
 }
 
 function frame() {
@@ -100,117 +120,46 @@ EL_spin.addEventListener("click", () => {
   if (!angVel) angVel = rand(0.25, 0.35);
 });
 
+var dropdown = d3.select("#selDataset2");
 
-function restaurants(restaurantInfo){
-  d3.json("/categories").then((Resources) => {
-      // //get samples info from json file
+  function init(){
+    selectorLabels.forEach((type)=>{
+      dropdown.append("option").text(type).property("value",type)
+    })
+  };
 
-      let samples = [];
-      for (var i = 0; i < data.length; i++) {
-          samples.push(Object.values(data)[i]);
-}
-      console.log("ID#", samples)
-      const twoColumns = { data: samples.map(({categories, restaurant }) => ({categories, restaurant })) };
-      console.log("twoColumns", twoColumns)
+  init();
 
-       // filter to get different types of cuisines
-      let restSamples = samples.filter(function (restNames) {
-          return restNames.categories_description == restaurantInfo
-      });
-      console.log("restSamples", restSamples)
-      let display2 = d3.select("#sample-metadata2");
-      display2.html("");
-      //get the list of restaurants
-      let restCounts = getcounts(restSamples, "restaurant");
-      console.log("restCounts", restCounts)
-      console.log(Object.keys(restCounts))
-      console.log(Object.values(restCounts));
-      let restResults = Object.keys(restCounts).map(f=>({type:f, count:restCounts[f]}))
-      console.log("restResults", restResults)
-       // Sort the data by the most number of cuisines in each city in descending (most to least)
-      let restResultsSortedByValues = Object.values(restResults).sort((a, b) => b.count - a.count);
-      console.log("restsortedbyvalues", restResultsSortedByValues)
-      restResultsSlicedData = restResultsSortedByValues.slice(0, 5);
-      console.log("restResultsSlicedData", restResultsSlicedData)
-      //get the list of 5 restaurants for each cuisine
-      restResultsDisplay=[]
-          for (var s = 0; s < restResultsSlicedData.length; s++) {
-              restResultsDisplay.push(restResultsSlicedData[s].type);
+  dropdown.on("change", function() {
+    d3.selectAll("h5").remove();
+
+    //get restaurants info from json file
+    d3.json("../../templates/Resources/yelp_atl_restaurants.json").then((restData) => {
+        let catList = Object.entries(restData.categories);
+        let nameList = Object.entries(restData.name);
+        let type = d3.select(this).property("value");
+        let restList = [];
+
+        for (let i=0; i<catList.length; i++) {
+          if (catList[i][1].includes(type)) {
+            restList.push(nameList[i][1]);
           }
-          console.log("restResultsdisplay", restResultsDisplay)
-      Object.entries(restResultsDisplay).forEach(([,d])=>{
-           display2.append("h5").text(`${d}`); 
-            });
-  })    
-}
-//restaurants("Italian")
-function init(){
+        };
 
+        displayList = [];
 
-// //  // see dropdown
-d3.json("/categories").then((data) => {
-  let sampleNames = [];
-  for (var i = 0; i < data.length; i++) {
-    sampleNames.push(Object.values(data)[i]);
-}
-  var boroNames = {};
-  sampleNames.forEach(function(typeBoro){
-  //console.log(value)
-  if (boroNames[typeBoro["boro"]]) {
-      boroNames[typeBoro["boro"]]++;
-    }
-    else {
-      boroNames[typeBoro["boro"]] = 1;
-    } 
-  })
+        for (let i=0; i<5; i++) {
+          var random = Math.floor(Math.random() * restList.length);
+          while (displayList.includes(restList[random])) {
+            var random = Math.floor(Math.random() * restList.length);
+          }
+          displayList.push(restList[random])
+          d3.select("#restaurants").append("h5").text(`${restList[random]}`).style("color", "black");
+        };
 
-  console.log("boroNames", boroNames)
-  let boroInfo = Object.keys(boroNames).map(e=>({boro:e, count:boroNames[e]}));
-  console.log("boroInfo", boroInfo);
-  var obj = {};
-sampleNames.forEach(function(value){
-//console.log(value)
-if (obj[value["cuisine_description"]]) {
-  obj[value["cuisine_description"]]++;
-}
-else {
-  obj[value["cuisine_description"]] = 1;
-} 
-});
-  let results = Object.keys(obj).map(e=>({type:e, count:obj[e]}));
-
-restaurantsTypes=[]
-  for (var i = 0; i < results.length; i++) {
-      restaurantsTypes.push(results[i].type);
-  }
- 
-let dropDown2 = d3. select("#selDataset2");
-restaurantsTypes.forEach((o)=>{
-dropDown2.append("option").text(o).property("value",o)
-})
-
-});
-};
-function optionChanged(restaurantInfo) {
- restaurants(restaurantInfo);
-
-
-};
-
-init()
-
-function getcounts(dataArray, myParam) {
-
-  var finalArray = {};
-  dataArray.forEach(function (boroNames) {
-      //console.log(value)
-      if (finalArray[boroNames[myParam]]) {
-          finalArray[boroNames[myParam]]++;
-      }
-      else {
-          finalArray[boroNames[myParam]] = 1;
-      }
+    })    
   });
-  return finalArray;
+
   
-}
+
+});
