@@ -135,7 +135,7 @@ var dropdown = d3.select("#selDataset2");
     d3.selectAll("h5").remove();
 
     //get restaurants info from json file
-    d3.json("../../templates/Resources/yelp_atl_restaurants.json").then((restData) => {
+    d3.json("Resources/yelp_atl_restaurants.json").then((restData) => {
         let catList = Object.entries(restData.categories);
         let nameList = Object.entries(restData.name);
         let type = d3.select(this).property("value");
