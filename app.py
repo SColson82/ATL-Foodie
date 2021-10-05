@@ -46,9 +46,9 @@ def home():
     return render_template("index.html")
 
 
-@app.route("/categories")
-def categories():
-    return render_template("categories.html")
+@app.route("/fortune")
+def fortune():
+    return render_template("fortune.html")
 
 
 @app.route("/map")
@@ -64,6 +64,10 @@ def find():
 @app.route("/ratings")
 def ratings():
     return render_template("ratings.html")
+
+@app.route("/cuisines")
+def cuisines():
+    return render_template("cuisines.html")
 
 
 # @app.route("/categories")
