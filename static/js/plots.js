@@ -222,15 +222,13 @@ function createAllBar() {
           var catList = Object.entries(restData.categories);
           var zipList = Object.entries(restData.postal_code);
   
-          for (let j = 0; j < catList.length; j++) {
-            if (zipList[j][1] == zip) {
-              for (let i = 0; i < types.length; i++) {
+        for (let j = 0; j < catList.length; j++) {
+            for (let i = 0; i < types.length; i++) {
                 if (catList[j][1].split(", ").includes(types[i])) {
-                  counts[i] += 1;
+                    counts[i] += 1;
                 }
-              }
             }
-          }
+        }
 
           var barList = [];
 
