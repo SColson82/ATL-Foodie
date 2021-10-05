@@ -23,48 +23,44 @@ function init() {
 };
 
 function dropdownChange(zip) {
-    d3.json("Resources/categories.json").then(function(categories) {
-        var typesBase = Object.values(categories.Category);
+    d3.json("statis/Resources/categories.json").then(function (categories) {
+      var typesBase = Object.values(categories.Category);
 
-        //get restaurants info from json file
-        d3.json("Resources/yelp_atl_restaurants.json").then(function(restData) {
-            
+      //get restaurants info from json file
+      d3.json("static/Resources/yelp_atl_restaurants.json").then(function (restData) {
+        var countsBase = [];
 
-            var countsBase = [];
+        for (let i = 0; i < typesBase.length; i++) {
+          countsBase[i] = 0;
+        }
 
-            for (let i=0; i<typesBase.length; i++) {
-                countsBase[i] = 0;      
-            };
+        var catList = Object.entries(restData.categories);
+        var zipList = Object.entries(restData.postal_code);
 
-            var catList = Object.entries(restData.categories);
-            var zipList = Object.entries(restData.postal_code);
+        for (let j = 0; j < catList.length; j++) {
+          if (zipList[j][1] == zip) {
+            for (let i = 0; i < typesBase.length; i++) {
+              if (catList[j][1].split(", ").includes(typesBase[i])) {
+                countsBase[i] += 1;
+              }
+            }
+          }
+        }
 
+        var types = [];
+        var counts = [];
+        j = 0;
 
-            for (let j=0; j<catList.length; j++) {
-                if (zipList[j][1] == (zip)) {
-                    
-                    for (let i=0; i<typesBase.length; i++) {
-                        if (catList[j][1].split(", ").includes(typesBase[i])) {
-                            countsBase[i] += 1;
-                        };
-                    };
-                };
-            };
+        for (let i = 0; i < typesBase.length; i++) {
+          if (countsBase[i] != 0) {
+            types[j] = typesBase[i];
+            counts[j] = countsBase[i];
+            j += 1;
+          }
+        }
 
-            var types = [];
-            var counts = [];
-            j = 0;
-
-            for (let i=0; i<typesBase.length; i++) {
-                if (countsBase[i] != 0) {
-                    types[j] = typesBase[i];
-                    counts[j] = countsBase[i];
-                    j += 1
-                };  
-            };
-
-            makeDotPlot(zip, types, counts);
-        });
+        makeDotPlot(zip, types, counts);
+      });
     }); 
 };
 
