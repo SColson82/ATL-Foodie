@@ -148,6 +148,7 @@ d3.json(url).then(function (data) {
           }
         }
 
+        displayList = [];
 
         for (let i = 0; i < 5; i++) {
           var random = Math.floor(Math.random() * restList.length);
@@ -155,18 +156,16 @@ d3.json(url).then(function (data) {
             var random = Math.floor(Math.random() * restList.length);
           }
 
+          displayList.push(restList[random]);
           var newOption = d3.select("#restaurants")
-            .append("h5")
-            .text(`${restList[random]}`)
-            .style("color", "black");
+          .append("h5")
+          .text(`${restList[random]}`)
+          .style("color", "black");
 
           if (rateList[random] % 1 != 0) {
             newOption.append("i")
             .attr("class", "fa fa-star-half-alt");
           };
-
-          
-            
         }
       });
     }
