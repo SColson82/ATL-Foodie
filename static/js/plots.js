@@ -294,7 +294,7 @@ function createAllBar() {
                   b: 100,
                   t: 50
               },
-              width: 1500,
+              width: 1250,
               height: 500,
               paper_bgcolor: 'rgb(254, 247, 234)',
               plot_bgcolor: 'rgb(254, 247, 234)',
