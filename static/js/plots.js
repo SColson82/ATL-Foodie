@@ -126,11 +126,39 @@ function makeDotPlot(zip, types, counts) {
 
 function makeBar(zip, types, counts) {
 
+    barList = [];
+
+    for (let i=0; i<types.length; i++) {
+        barList.push({"name": types[i], "count": counts[i]});
+    };
+
+    barList.sort(function(a,b) {
+        if (a.count < b.count) {
+            return -1;
+        } else if (a.count == b.count) {
+            if (a.name < b.name) {
+                return -1;
+            } else {
+                return 1;
+            };
+        } else {
+            return 1;
+        };
+    });
+    
+    barList.reverse();
+
+    for (let i=0; i<10; i++) {
+        topTypes[i] = barList[i].name;
+        topCounts[i] = barList[i].count;
+    };
+    
+
     var data = [{
         type: 'bar',
-        x: counts,
-        y: types,
-        name: 'SF Zoo',
+        x: topCounts,
+        y: topTypes,
+        name: 'Top 10 Cuisines',
         orientation: 'h',
         marker: {
             color: 'rgba(111, 34, 50,1)',
