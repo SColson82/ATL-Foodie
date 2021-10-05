@@ -53,7 +53,7 @@ def categories():
 
 @app.route("/map")
 def map():
-    return render_template("maps.html")
+    return render_template("map.html")
 
 
 @app.route("/find")

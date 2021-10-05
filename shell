@@ -1,1 +1,0 @@
-FLASK_APP=ATL-Foodie/app.py flask run
