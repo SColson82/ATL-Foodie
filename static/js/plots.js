@@ -289,10 +289,10 @@ function createAllBar() {
                   tickcolor: 'rgb(102, 102, 102)'
               },
               margin: {
-                  l: 140,
+                  l: 40,
                   r: 40,
-                  b: 50,
-                  t: 80
+                  b: 100,
+                  t: 50
               },
               width: 1500,
               height: 500,
