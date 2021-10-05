@@ -289,13 +289,13 @@ function createAllBar() {
                   tickcolor: 'rgb(102, 102, 102)'
               },
               margin: {
-                  l: 30,
-                  r: 20,
-                  b: 140,
+                  l: 25,
+                  r: 10,
+                  b: 150,
                   t: 50
               },
-              width: 1250,
-              height: 500,
+              width: 1260,
+              height: 600,
               paper_bgcolor: 'rgb(254, 247, 234)',
               plot_bgcolor: 'rgb(254, 247, 234)',
               hovermode: 'closest'
