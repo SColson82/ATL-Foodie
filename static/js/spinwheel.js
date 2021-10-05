@@ -163,10 +163,10 @@ d3.json(url).then(function (data) {
           .text(`${restList[random]}`)
           .style("color", "black");
 
-          for (let j=1; j<ratelist[random]+1; j++) {
+          for (let j=1; j<rateList[random]+1; j++) {
             var newOption = newOption.append("i").attr("class", "fa fa-star");
           }
-          
+
           if (rateList[random] % 1 != 0) {
             newOption.append("i")
             .attr("class", "fa fa-star-half-alt");
