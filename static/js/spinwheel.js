@@ -83,14 +83,7 @@ d3.json(url).then(function (data) {
     function lineNum() {
       if (!angVel) {
         return "SPIN";
-      } else if (sector.label.split(" ")[1]) {
-        let textSplit = sector.label.split(" ");
-        let returnString = "";
-        for (let i = 0; i < textSplit.length; i++) {
-          returnString += `${textSplit[i]} <br>`;
-        }
-        return returnString;
-      } else {
+      }  else {
         return sector.label;
       }
     }
