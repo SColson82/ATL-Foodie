@@ -136,27 +136,37 @@ d3.json(url).then(function (data) {
       d3.json("static/Resources/yelp_atl_restaurants.json").then((restData) => {
         let catList = Object.entries(restData.categories);
         let nameList = Object.entries(restData.name);
+        let starList = Object.entries(restData.stars);
         let type = d3.select(this).property("value");
         let restList = [];
+        let rateList = [];
 
         for (let i = 0; i < catList.length; i++) {
           if (catList[i][1].includes(type)) {
             restList.push(nameList[i][1]);
+            rateList.push(starList[i][1])
           }
         }
 
-        displayList = [];
 
         for (let i = 0; i < 5; i++) {
           var random = Math.floor(Math.random() * restList.length);
           while (displayList.includes(restList[random])) {
             var random = Math.floor(Math.random() * restList.length);
           }
-          displayList.push(restList[random]);
-          d3.select("#restaurants")
+
+          var newOption = d3.select("#restaurants")
             .append("h5")
             .text(`${restList[random]}`)
             .style("color", "black");
+
+          if (rateList[random] % 1 != 0) {
+            newOption.append("i")
+            .attr("class", "fa fa-star-half-alt");
+          };
+
+          
+            
         }
       });
     }
