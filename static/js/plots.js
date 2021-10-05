@@ -63,6 +63,7 @@ function dropdownChange(zip) {
         }
 
         makeDotPlot(zip, types, counts);
+        makeBar(zip, types, counts);
       });
     }); 
 };
@@ -89,13 +90,17 @@ function makeDotPlot(zip, types, counts) {
 
     var layout = {
     title: `Cuisine Type Count for Atlanta Zip Code ${zip}`,
+    font: {
+        color: 'rgba(195,7,63,1)',
+        family: 'Patrick Hand'
+    },
     xaxis: {
         showgrid: false,
         showline: true,
         linecolor: 'rgb(102, 102, 102)',
         titlefont: {
         font: {
-            color: 'rgb(204, 204, 204)'
+            color: 'rgba(195,7,63,1)'
         }
         },
         tickfont: {
@@ -113,13 +118,6 @@ function makeDotPlot(zip, types, counts) {
         b: 50,
         t: 80
     },
-    legend: {
-        font: {
-        size: 10,
-        },
-        yanchor: 'middle',
-        xanchor: 'right'
-    },
     width: 700,
     height: 900,
     paper_bgcolor: 'rgb(254, 247, 234)',
@@ -128,4 +126,54 @@ function makeDotPlot(zip, types, counts) {
     };
 
     Plotly.newPlot('dot-plot', data, layout);
+};
+
+function makeBar(zip, types, counts) {
+
+    var data = [{
+        type: 'bar',
+        x: counts,
+        y: types,
+        name: 'SF Zoo',
+        orientation: 'h',
+        marker: {
+            color: 'rgba(111, 34, 50,1)',
+            width: 1
+        }
+    }];
+
+    var layout = {
+        title: `Top 10 Cuisines for ${zip}`,
+        xaxis: {
+            showgrid: false,
+            showline: true,
+            linecolor: 'rgb(102, 102, 102)',
+            titlefont: {
+            font: {
+                color: 'rgba(195,7,63,1)'
+            }
+            },
+            tickfont: {
+            font: {
+                color: 'rgb(102, 102, 102)'
+            }
+            },
+            autotick: true,
+            ticks: 'outside',
+            tickcolor: 'rgb(102, 102, 102)'
+        },
+        margin: {
+            l: 140,
+            r: 40,
+            b: 50,
+            t: 80
+        },
+        width: 700,
+        height: 900,
+        paper_bgcolor: 'rgb(254, 247, 234)',
+        plot_bgcolor: 'rgb(254, 247, 234)',
+        hovermode: 'closest'
+    };
+      
+    Plotly.newPlot('bar', data, layout);
 };
