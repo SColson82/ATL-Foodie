@@ -92,21 +92,17 @@ function makeDotPlot(zip, types, counts) {
     title: `Cuisine Type Count for Atlanta Zip Code ${zip}`,
     font: {
         color: 'rgba(195,7,63,1)',
-        family: 'Patrick Hand'
+        family: 'Patrick Hand',
+        size: 16
     },
     xaxis: {
         showgrid: false,
         showline: true,
         linecolor: 'rgb(102, 102, 102)',
-        titlefont: {
-        font: {
-            color: 'rgba(195,7,63,1)'
-        }
-        },
         tickfont: {
-        font: {
-            color: 'rgb(102, 102, 102)'
-        }
+            font: {
+                color: 'rgb(102, 102, 102)'
+            }
         },
         autotick: true,
         ticks: 'outside',
@@ -143,20 +139,20 @@ function makeBar(zip, types, counts) {
     }];
 
     var layout = {
-        title: `Top 10 Cuisines for ${zip}`,
+        title: `Top 10 Cuisines for Atlanta Zip Code ${zip}`,
+        font: {
+            color: 'rgba(195,7,63,1)',
+            family: 'Patrick Hand',
+            size: 16
+        },
         xaxis: {
             showgrid: false,
             showline: true,
             linecolor: 'rgb(102, 102, 102)',
-            titlefont: {
-            font: {
-                color: 'rgba(195,7,63,1)'
-            }
-            },
             tickfont: {
-            font: {
-                color: 'rgb(102, 102, 102)'
-            }
+                font: {
+                    color: 'rgb(102, 102, 102)'
+                }
             },
             autotick: true,
             ticks: 'outside',
@@ -168,7 +164,7 @@ function makeBar(zip, types, counts) {
             b: 50,
             t: 80
         },
-        width: 700,
+        width: 500,
         height: 900,
         paper_bgcolor: 'rgb(254, 247, 234)',
         plot_bgcolor: 'rgb(254, 247, 234)',
