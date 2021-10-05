@@ -85,7 +85,7 @@ p {
 }
 
 
-/******** Categories Box Styles ********/
+/******** Fortune Box Styles ********/
 
 
 #wheelOfFortune {
@@ -139,4 +139,11 @@ h3 {
 
 #restaurants.h5 {
     font-style:italic;
+}
+
+
+/******** Cuisines Styles ********/
+#zipSelector {
+    width: 165px; 
+    margin-bottom: 20px;
 }

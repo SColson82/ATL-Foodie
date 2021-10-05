@@ -83,14 +83,7 @@ d3.json(url).then(function (data) {
     function lineNum() {
       if (!angVel) {
         return "SPIN";
-      } else if (sector.label.split(" ")[1]) {
-        let textSplit = sector.label.split(" ");
-        let returnString = "";
-        for (let i = 0; i < textSplit.length; i++) {
-          returnString += `${textSplit[i]} <br>`;
-        }
-        return returnString;
-      } else {
+      }  else {
         return sector.label;
       }
     }
@@ -136,12 +129,15 @@ d3.json(url).then(function (data) {
       d3.json("static/Resources/yelp_atl_restaurants.json").then((restData) => {
         let catList = Object.entries(restData.categories);
         let nameList = Object.entries(restData.name);
+        let starList = Object.entries(restData.stars);
         let type = d3.select(this).property("value");
         let restList = [];
+        let rateList = [];
 
         for (let i = 0; i < catList.length; i++) {
           if (catList[i][1].includes(type)) {
             restList.push(nameList[i][1]);
+            rateList.push(starList[i][1])
           }
         }
 
@@ -152,11 +148,22 @@ d3.json(url).then(function (data) {
           while (displayList.includes(restList[random])) {
             var random = Math.floor(Math.random() * restList.length);
           }
+
           displayList.push(restList[random]);
-          d3.select("#restaurants")
-            .append("h5")
-            .text(`${restList[random]}`)
-            .style("color", "black");
+
+          var newOption = d3.select("#restaurants")
+          .append("h5")
+          .text(`${restList[random]}`)
+          .style("color", "black");
+
+          for (let j=1; j<Math.floor(rateList[random]+1); j++) {
+            var newOption = newOption.append("i").attr("class", "fa fa-star");
+          }
+
+          if (rateList[random] % 1 != 0) {
+            newOption.append("i")
+            .attr("class", "fa fa-star-half-alt");
+          };
         }
       });
     }

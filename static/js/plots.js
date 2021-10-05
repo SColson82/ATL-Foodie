@@ -22,6 +22,7 @@ function init() {
       });
 
       dropdownChange(30002);
+      createAllBar();
     });
 };
 
@@ -63,6 +64,7 @@ function dropdownChange(zip) {
         }
 
         makeDotPlot(zip, types, counts);
+        makeBar(zip, types, counts);
       });
     }); 
 };
@@ -89,19 +91,19 @@ function makeDotPlot(zip, types, counts) {
 
     var layout = {
     title: `Cuisine Type Count for Atlanta Zip Code ${zip}`,
+    font: {
+        color: 'rgba(195,7,63,1)',
+        family: 'Patrick Hand',
+        size: 16
+    },
     xaxis: {
         showgrid: false,
         showline: true,
         linecolor: 'rgb(102, 102, 102)',
-        titlefont: {
-        font: {
-            color: 'rgb(204, 204, 204)'
-        }
-        },
         tickfont: {
-        font: {
-            color: 'rgb(102, 102, 102)'
-        }
+            font: {
+                color: 'rgb(102, 102, 102)'
+            }
         },
         autotick: true,
         ticks: 'outside',
@@ -113,13 +115,6 @@ function makeDotPlot(zip, types, counts) {
         b: 50,
         t: 80
     },
-    legend: {
-        font: {
-        size: 10,
-        },
-        yanchor: 'middle',
-        xanchor: 'right'
-    },
     width: 700,
     height: 900,
     paper_bgcolor: 'rgb(254, 247, 234)',
@@ -128,4 +123,185 @@ function makeDotPlot(zip, types, counts) {
     };
 
     Plotly.newPlot('dot-plot', data, layout);
+};
+
+function makeBar(zip, types, counts) {
+
+    var barList = [];
+
+    for (let i=0; i<types.length; i++) {
+        barList.push({"name": types[i], "count": counts[i]});
+    };
+
+    barList.sort(function(a,b) {
+        if (a.count < b.count) {
+            return -1;
+        } else if (a.count == b.count) {
+            if (a.name < b.name) {
+                return 1;
+            } else {
+                return -1;
+            };
+        } else {
+            return 1;
+        };
+    });
+
+    barList.reverse();
+    var topTypes=[];
+    var topCounts=[];
+
+    for (let i=0; i<10; i++) {
+        topTypes[i] = barList[i].name;
+        topCounts[i] = barList[i].count;
+    };
+    
+    topTypes.reverse();
+    topCounts.reverse();
+
+    var data = [{
+        type: 'bar',
+        x: topCounts,
+        y: topTypes,
+        name: 'Top 10 Cuisines',
+        orientation: 'h',
+        marker: {
+            color: 'rgba(111, 34, 50,1)',
+            width: 1
+        }
+    }];
+
+    var layout = {
+        title: `Top 10 Cuisines for Atlanta Zip Code ${zip}`,
+        font: {
+            color: 'rgba(195,7,63,1)',
+            family: 'Patrick Hand',
+            size: 16
+        },
+        xaxis: {
+            showgrid: false,
+            showline: true,
+            linecolor: 'rgb(102, 102, 102)',
+            tickfont: {
+                font: {
+                    color: 'rgb(102, 102, 102)'
+                }
+            },
+            autotick: true,
+            ticks: 'outside',
+            tickcolor: 'rgb(102, 102, 102)'
+        },
+        margin: {
+            l: 140,
+            r: 40,
+            b: 50,
+            t: 80
+        },
+        width: 500,
+        height: 900,
+        paper_bgcolor: 'rgb(254, 247, 234)',
+        plot_bgcolor: 'rgb(254, 247, 234)',
+        hovermode: 'closest'
+    };
+      
+    Plotly.newPlot('bar', data, layout);
+};
+
+function createAllBar() {
+    d3.json("static/Resources/categories.json").then(function (categories) {
+        var types = Object.values(categories.Category);
+  
+        //get restaurants info from json file
+        d3.json("static/Resources/yelp_atl_restaurants.json").then(function (restData) {
+          var counts = [];
+  
+          for (let i = 0; i < types.length; i++) {
+            counts[i] = 0;
+          }
+  
+          var catList = Object.entries(restData.categories);
+          var zipList = Object.entries(restData.postal_code);
+  
+        for (let j = 0; j < catList.length; j++) {
+            for (let i = 0; i < types.length; i++) {
+                if (catList[j][1].split(", ").includes(types[i])) {
+                    counts[i] += 1;
+                }
+            }
+        }
+
+          var barList = [];
+
+          for (let i=0; i<types.length; i++) {
+              barList.push({"name": types[i], "count": counts[i]});
+          };
+      
+          barList.sort(function(a,b) {
+              if (a.count < b.count) {
+                  return -1;
+              } else if (a.count == b.count) {
+                  if (a.name < b.name) {
+                      return 1;
+                  } else {
+                      return -1;
+                  };
+              } else {
+                  return 1;
+              };
+          });
+      
+          barList.reverse();
+
+        for (let i=0; i<barList.length; i++) {
+            types[i] = barList[i].name;
+            counts[i] = barList[i].count;
+        };
+      
+          var data = [{
+              type: 'bar',
+              x: types,
+              y: counts,
+              name: 'All ATL Cuisines',
+              marker: {
+                  color: 'rgba(111, 34, 50,1)',
+                  width: 1
+              }
+          }];
+      
+          var layout = {
+              title: "Cuisine Type Count for Atlanta",
+              font: {
+                  color: 'rgba(195,7,63,1)',
+                  family: 'Patrick Hand',
+                  size: 16
+              },
+              xaxis: {
+                  showgrid: false,
+                  showline: true,
+                  linecolor: 'rgb(102, 102, 102)',
+                  tickfont: {
+                      font: {
+                          color: 'rgb(102, 102, 102)'
+                      }
+                  },
+                  autotick: true,
+                  ticks: 'outside',
+                  tickcolor: 'rgb(102, 102, 102)'
+              },
+              margin: {
+                  l: 25,
+                  r: 10,
+                  b: 150,
+                  t: 50
+              },
+              width: 1260,
+              height: 600,
+              paper_bgcolor: 'rgb(254, 247, 234)',
+              plot_bgcolor: 'rgb(254, 247, 234)',
+              hovermode: 'closest'
+          };
+            
+          Plotly.newPlot('all-bar', data, layout);
+        });
+    }); 
 };
