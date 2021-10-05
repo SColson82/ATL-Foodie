@@ -137,9 +137,9 @@ function makeBar(zip, types, counts) {
             return -1;
         } else if (a.count == b.count) {
             if (a.name < b.name) {
-                return -1;
-            } else {
                 return 1;
+            } else {
+                return -1;
             };
         } else {
             return 1;
@@ -155,6 +155,8 @@ function makeBar(zip, types, counts) {
         topCounts[i] = barList[i].count;
     };
     
+    topTypes.reverse();
+    topCounts.reverse();
 
     var data = [{
         type: 'bar',
