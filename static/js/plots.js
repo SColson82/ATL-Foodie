@@ -145,8 +145,10 @@ function makeBar(zip, types, counts) {
             return 1;
         };
     });
-    
+
     barList.reverse();
+    topTypes=[];
+    topCounts=[];
 
     for (let i=0; i<10; i++) {
         topTypes[i] = barList[i].name;
