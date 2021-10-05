@@ -301,7 +301,7 @@ function createAllBar() {
               hovermode: 'closest'
           };
             
-          Plotly.newPlot('bar', data, layout);
+          Plotly.newPlot('all-bar', data, layout);
         });
     }); 
 };
