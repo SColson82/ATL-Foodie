@@ -9,21 +9,24 @@ dropdown.on("change", function() {
 });
 
 function init() {
-    d3.json("Resources/yelp_atl_restaurants.json").then(function(restData) {
+    d3.json("static/Resources/yelp_atl_restaurants.json").then(function (
+      restData
+    ) {
+      var zips = [...new Set(Object.values(restData.postal_code))];
+      zips.sort(function (a, b) {
+        return a - b;
+      });
 
-        var zips = [...new Set(Object.values(restData.postal_code))];
-        zips.sort(function(a,b){return a-b});
+      zips.forEach((zipCode) => {
+        dropdown.append("option").text(zipCode).property("value", zipCode);
+      });
 
-        zips.forEach((zipCode)=>{
-            dropdown.append("option").text(zipCode).property("value",zipCode)
-        });
-
-        dropdownChange(30002);
+      dropdownChange(30002);
     });
 };
 
 function dropdownChange(zip) {
-    d3.json("statis/Resources/categories.json").then(function (categories) {
+    d3.json("static/Resources/categories.json").then(function (categories) {
       var typesBase = Object.values(categories.Category);
 
       //get restaurants info from json file
