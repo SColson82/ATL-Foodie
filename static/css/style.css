@@ -34,7 +34,7 @@ body {
 }
 
 .link:hover {
-    color: rgb(111, 34, 50,1);
+    color: rgba(111, 34, 50,1);
 }
 
 p {

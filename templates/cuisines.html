@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-{% extends "base.html" %} {% block content %}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <div class="row header-row r1">
-      <h1 class="display-1 text-center">Find</h1>
-      <p class="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
-      </p>
-    </div>
-=======
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,7 +8,7 @@
         <link href="../static/css/style.css" rel="stylesheet">
         <script src="https://kit.fontawesome.com/8502dc2626.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia|Urbanist|Bangers|Patrick+Hand&display=swap">
-        <title>Find</title>
+        <title>Prices</title>
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark">
@@ -33,28 +21,30 @@
                       <a class="nav-item nav-link" href="find.html">Find</a>
                   </div>
         </nav>
->>>>>>> 01de0162b67a754054ac56c48e8376feac721791
 
-    <div class="row link-row">
-      <div class="col-sm-11">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""
-              >Latitude and Longitude Coordinates</span
-            >
-          </div>
-          <input type="text" class="form-control" />
-          <input type="text" class="form-control" />
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="row header-row r1">
+                    <h1 class="display-1 text-center">Cuisines</h1>
+                    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p> 
+                </div>
+
+                <div class="row link-row">
+                    <div class="col-md-6">
+                        <h4>Atlanta Zip Codes</h4>
+                        <select id="zipSelector">
+                        </select>
+                        <hr>
+                        <div id="dot-plot"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-1">
-        <button type="button" class="btn btn-dark" type="submit">Search</button>
-      </div>
-    </div>
 
-    <div class="row link-row">
-      <div class="find-me"></div>
-    </div>
-  </div>
-</div>
-{% endblock %}
+        <script src="https://d3js.org/d3.v5.min.js"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="../static/js/plots.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.min.js" integrity="sha384-skAcpIdS7UcVUC05LJ9Dxay8AXcDYfBJqt1CJ85S/CFujBsIzCIv+l9liuYLaMQ/" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
