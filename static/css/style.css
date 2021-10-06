@@ -1,149 +1,150 @@
 body {
-    color: rgba(195,7,63,1);
+  color: rgba(195, 7, 63, 1);
 }
 
 body {
-    background-image: url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/atlanta-skyline-in-black-and-white-jackson-street-bridge-view-gregory-ballos.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
-    font-family: 'Patrick Hand';
+  background-image: url("https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/atlanta-skyline-in-black-and-white-jackson-street-bridge-view-gregory-ballos.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Patrick Hand";
 }
 
 .header-row {
-    padding-top: 100px;
-    padding-bottom: 50px;
+  padding-top: 100px;
+  padding-bottom: 50px;
 }
 
 .r1 {
-    background-color: rgba(0,0,0,.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .link-row {
-    padding: 20px;
-    background-color: rgba(255, 255, 255, .6);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .link {
-    color: rgba(195,7,63,1);
-    text-decoration: none;
+  color: rgba(195, 7, 63, 1);
+  text-decoration: none;
 }
 
 .link h3 {
-    font-size: 40px;
+  font-size: 40px;
 }
 
 .link:hover {
-    color: rgba(111, 34, 50,1);
+  color: rgba(111, 34, 50, 1);
 }
 
 p {
-    font-size: 30px !important;
-    
+  font-size: 30px !important;
 }
 
 .display-1 {
-    font-family: "Bangers";
-    font-size: 100px !important;
+  font-family: "Bangers";
+  font-size: 100px !important;
 }
-
 
 /*********** Navbar Styles ***********/
 .navbar-brand {
-    font-family: "Bangers";
-    font-size: 50px;
-    padding: 20px;
+  font-family: "Bangers";
+  font-size: 50px;
+  padding: 20px;
 }
 
 .nav {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .nav-item {
-    padding: 30px;
-    color: white;
+  padding: 30px;
+  color: white;
 }
 
-.nav-item:hover, .navbar-brand:hover {
-    color: rgba(195,7,63,1) !important;
+.nav-item:hover,
+.navbar-brand:hover {
+  color: rgba(195, 7, 63, 1) !important;
 }
 
 /******** Input Box Styles ********/
 .input-group-text {
-    background-color: rgba(0,0,0,.6);
-    color: white;
-    font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 30px;
 }
 
 .form-control {
-    border: 2px solid rgba(195,7,63,1);
+  border: 2px solid rgba(195, 7, 63, 1);
 }
 
 .btn {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 
 /******** Fortune Box Styles ********/
 
-
 #wheelOfFortune {
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-      }
-      
-      #wheel {
-        display: block;
-      }
-      
-      #spin {
-        font: 2.0em/0 sans-serif;
-        user-select: none;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 30%;
-        height: 30%;
-        margin: -15%;
-        background: #fff;
-        color: #fff;
-        box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
-        border-radius: 50%;
-        transition: 0.8s;
-      }
-      
-      #spin::after {
-        content: "";
-        position: absolute;
-        top: -17px;
-        border: 10px solid transparent;
-        border-bottom-color: currentColor;
-        border-top: none;
-      }
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
 
+#wheel {
+  display: block;
+}
+
+#spin {
+  font: 2em/0 sans-serif;
+  user-select: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30%;
+  height: 30%;
+  margin: -15%;
+  background: #fff;
+  color: #fff;
+  box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  transition: 0.8s;
+}
+
+#spin::after {
+  content: "";
+  position: absolute;
+  top: -17px;
+  border: 10px solid transparent;
+  border-bottom-color: currentColor;
+  border-top: none;
+}
 
 .container {
-    margin-top: 3%;
-    
+  margin-top: 3%;
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
 #restaurants.h5 {
-    font-style:italic;
+  font-style: italic;
 }
-
 
 /******** Cuisines Styles ********/
 #zipSelector {
-    width: 165px; 
-    margin-bottom: 20px;
+  width: 165px;
+  margin-bottom: 20px;
+}
+
+/* map style  */
+#map {
+  height: 100%;
+  padding: 0;
+  margin: 0;
 }
