@@ -4,9 +4,17 @@ init();
 var dropdown = d3.select("#zipSelector");
 
 dropdown.on("change", function() {
-    var zip = d3.select(this).property("value");
-    dropdownChange(zip);
-});
+    var zipSel = [];
+    selected = d3.select(this).selectAll("option:checked").each(function() {zipSel.push(this.value)});
+    var zipString = `${zipSel[0]}`;
+    for (let i=1; i<zipSel.length; i++) {
+        zipString += `, ${zipSel[i]}`
+        if (i % 7 == 0) {
+            zipString += "<br>";
+        }
+    };
+    dropdownChange(zipSel, zipString);
+}); 
 
 function init() {
     d3.json("static/Resources/yelp_atl_restaurants.json").then(function (
@@ -21,12 +29,12 @@ function init() {
         dropdown.append("option").text(zipCode).property("value", zipCode);
       });
 
-      dropdownChange(30002);
+      dropdownChange([30002], "30002");
       createAllBar();
     });
 };
 
-function dropdownChange(zip) {
+function dropdownChange(zipSel, zipString) {
     d3.json("static/Resources/categories.json").then(function (categories) {
       var typesBase = Object.values(categories.Category);
 
@@ -42,13 +50,15 @@ function dropdownChange(zip) {
         var zipList = Object.entries(restData.postal_code);
 
         for (let j = 0; j < catList.length; j++) {
-          if (zipList[j][1] == zip) {
-            for (let i = 0; i < typesBase.length; i++) {
-              if (catList[j][1].split(", ").includes(typesBase[i])) {
-                countsBase[i] += 1;
-              }
+            for (let k=0; k<zipSel.length; k++) {
+                if (zipSel[k] == (zipList[j][1])) { //(zipList[j][1] == zip) {
+                    for (let i = 0; i < typesBase.length; i++) {
+                        if (catList[j][1].split(", ").includes(typesBase[i])) {
+                            countsBase[i] += 1;
+                        }
+                    }
+                }
             }
-          }
         }
 
         var types = [];
@@ -63,13 +73,13 @@ function dropdownChange(zip) {
           }
         }
 
-        makeDotPlot(zip, types, counts);
-        makeBar(zip, types, counts);
+        makeDotPlot(zipString, types, counts);
+        makeBar(zipString, types, counts);
       });
     }); 
 };
 
-function makeDotPlot(zip, types, counts) {
+function makeDotPlot(zipString, types, counts) {
     var trace1 = {
     type: 'scatter',
     x: counts,
@@ -86,11 +96,10 @@ function makeDotPlot(zip, types, counts) {
         size: 16
     }};
 
-
     var data = [trace1];
 
     var layout = {
-    title: `Cuisine Type Count for Atlanta Zip Code ${zip}`,
+    title: `Cuisine Type Count for Atlanta Zip Code<br> ${zipString}`,
     font: {
         color: 'rgba(195,7,63,1)',
         family: 'Patrick Hand',
@@ -125,7 +134,7 @@ function makeDotPlot(zip, types, counts) {
     Plotly.newPlot('dot-plot', data, layout);
 };
 
-function makeBar(zip, types, counts) {
+function makeBar(zipString, types, counts) {
 
     var barList = [];
 
@@ -172,7 +181,7 @@ function makeBar(zip, types, counts) {
     }];
 
     var layout = {
-        title: `Top 10 Cuisines for Atlanta Zip Code ${zip}`,
+        title: `Top 10 Cuisines for Atlanta Zip Code<br> ${zipString}`,
         font: {
             color: 'rgba(195,7,63,1)',
             family: 'Patrick Hand',
