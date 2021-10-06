@@ -3,16 +3,20 @@
   <div class="container">
     <div class="row header-row r1">
       <h1 class="display-1 text-center">Ratings</h1>
-      <p class="lead">
-        This is a simple hero unit, a simple jumbotron-style component for
-        calling extra attention to featured content or information.
+      <p class="lead text-center">
+        I still need to add the weights for ratings! This is a regular heat map right now.
       </p>
     </div>
 
     <div class="row link-row">
-      <div id="rate-map" onchange="optionChanged(this.value)"></div>
+      <div class="col-md-12">
+        <div id="map"></div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Leaflet heatmap plugin-->
+<script type="text/javascript" src="../static/js/leaflet-heat.js"></script>
 <script src="../static/js/ratings.js"></script>
 {% endblock %}

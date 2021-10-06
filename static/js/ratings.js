@@ -1,60 +1,32 @@
-// function charts(yelpRestaurantID) {
-//     d3.json("static/Resources/yelp_atl_restaurants.json").then(data) =>{
-//         var plattingData =data.review_count;
-//     }
-// }
-var data = "static/Resources/yelp_atl_restaurants.json";
+var myMap = L.map("map", {
+  center: [33.82, -84.33],
+  zoom: 12
+});
 
-var dataPlotting = [
-  {
-    type: "densitymapbox",
-    lon: data.longitude,
-    lat: data.latitude,
-    z: [1, 3, 2],
+// Adding the tile layer
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
+
+d3.json("../static/Resources/yelp_atl_restaurants.json").then(function(restData) {
+
+  let starList = Object.entries(restData.stars);
+  let latList = Object.entries(restData.latitude);
+  let longList = Object.entries(restData.longitude);
+  console.log(longList);
+  var heatArray = [];
+  console.log(heatArray);
+
+  for (var i = 0; i < starList.length; i++) {
+    heatArray.push([latList[i][1], longList[i][1]]);
+  };
+
+  console.log(heatArray);
+
+  L.heatLayer(heatArray, {
     radius: 50,
-    colorbar: { y: 1, yanchor: "top", len: 0.45 },
-  },
-  {
-    type: "densitymapbox",
-    lon: [32, 35],
-    lat: [-82, -85],
-    radius: [50, 10],
-    colorbar: { y: 0, yanchor: "bottom", len: 0.45 },
-  },
-];
+    blur: 35
+  }).addTo(myMap);
 
-var layout = {
-  mapbox: { style: "light", center: { lat: 33.75, lon: -84.39 } },
-  width: 600,
-  height: 400,
-};
-var PUBLIC_API_KEY =
-  "pk.eyJ1Ijoic2NvbHNvbjgyIiwiYSI6ImNrdTYzbjhrdjU3ODMyb28yZmlrMHpybjYifQ.jzpQ-HWh3lT55X-v0IQoHA";
-var config = { mapboxAccessToken: PUBLIC_API_KEY };
 
-Plotly.newPlot("rate-map", dataPlotting, layout, config);
-
-function init() {
-  d3.json("static/Resources/yelp_atl_restaurants.json").then(function (data) {
-    console.log("static/Resources/yelp_atl_restaurants.json", data);
-    // Set up the DropDown:
-    let DropDown = d3.select(`#rate-map`);
-
-    data.names.forEach((review_count) => {
-      DropDown.append(`option`)
-        .text(review_count)
-        .property(`value`, review_count);
-    });
-    // Reset demographic info and visuals to first subject when page is refreshed.
-    const firstSample = data.review_count[0];
-    charts(firstSample);
-    demo(firstSample);
-  });
-}
-// Pull data for new subject into demo and visuals.
-function optionChanged(newSample) {
-  charts(newSample);
-  demo(newSample);
-}
-
-init();
+});

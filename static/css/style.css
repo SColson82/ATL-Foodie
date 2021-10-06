@@ -138,13 +138,15 @@ h3 {
 
 /******** Cuisines Styles ********/
 #zipSelector {
-  width: 165px;
-  margin-bottom: 20px;
+    width: 165px; 
+    margin-bottom: 20px;
 }
 
-/* map style  */
+/******** Map Styles ********/
 #map {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 700px;  /* or as desired */
+    width: 100%;  /* This means "100% of the width of its container" */
+};
