@@ -15,11 +15,11 @@ function createMap(restaurants) {
 
   // Create an overlayMaps object to hold the bikeStations layer.
   var overlayMaps = {
-    "restaurants": restaurants,
+    restaurants: restaurants,
   };
 
   // Create the map object with options.
-  var map = L.map("map-id", {
+  var map = L.map("map", {
     center: [33.84, -84.32],
     zoom: 11,
     layers: [streetmap, restaurants],
@@ -38,16 +38,23 @@ function createMarkers(response) {
   var stations = Object.entries(response.name);
   var latitude = Object.entries(response.latitude);
   var longitude = Object.entries(response.longitude);
-  console.log(stations)
+  console.log(stations);
   // Initialize an array to hold bike markers.
   var restaurantMarkers = [];
 
   // Loop through the stations array.
   for (var index = 0; index < stations.length; index++) {
-
     // For each station, create a marker, and bind a popup with the station's name.
-    var restaurantMarker = L.marker([latitude[index][1], longitude[index][1]]).bindPopup(
-      "<h3>" + stations[index][1] + "<h3><h3>Capacity: " + latitude[index][1] + longitude[index][1] +  "</h3>"
+    var restaurantMarker = L.marker([
+      latitude[index][1],
+      longitude[index][1],
+    ]).bindPopup(
+      "<h3>" +
+        stations[index][1] +
+        "<h3><h3>Capacity: " +
+        latitude[index][1] +
+        longitude[index][1] +
+        "</h3>"
     );
 
     // Add the marker to the bikeMarkers array.
@@ -59,6 +66,4 @@ function createMarkers(response) {
 }
 
 // Perform an API call to the Citi Bike API to get the station information. Call createMarkers when it completes.
-d3.json("../Basic/static/Resources/yelp_atl_restaurants.json").then(
-  createMarkers
-);
+d3.json("../static/Resources/yelp_atl_restaurants.json").then(createMarkers);
