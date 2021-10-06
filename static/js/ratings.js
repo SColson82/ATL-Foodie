@@ -4,6 +4,7 @@
 //     }
 // }
 var data = "static/Resources/yelp_atl_restaurants.json";
+
 var dataPlotting = [
   {
     type: "densitymapbox",
@@ -15,9 +16,9 @@ var dataPlotting = [
   },
   {
     type: "densitymapbox",
-    lon: [-10, -20, -30],
-    lat: [15, 25, 35],
-    radius: [50, 100, 10],
+    lon: [32, 35],
+    lat: [-82, -85],
+    radius: [50, 10],
     colorbar: { y: 0, yanchor: "bottom", len: 0.45 },
   },
 ];
