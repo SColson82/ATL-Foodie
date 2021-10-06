@@ -147,3 +147,14 @@ h3 {
     width: 165px; 
     margin-bottom: 20px;
 }
+
+
+
+/******** Map Styles ********/
+#map {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 700px;  /* or as desired */
+    width: 100%;  /* This means "100% of the width of its container" */
+};
