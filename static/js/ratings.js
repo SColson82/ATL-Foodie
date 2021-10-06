@@ -13,20 +13,15 @@ d3.json("../static/Resources/yelp_atl_restaurants.json").then(function(restData)
   let starList = Object.entries(restData.stars);
   let latList = Object.entries(restData.latitude);
   let longList = Object.entries(restData.longitude);
-  console.log(longList);
   var heatArray = [];
-  console.log(heatArray);
 
   for (var i = 0; i < starList.length; i++) {
-    heatArray.push([latList[i][1], longList[i][1]]);
+    heatArray.push([latList[i][1], longList[i][1], starList[i][1]]);
   };
 
-  console.log(heatArray);
-
   L.heatLayer(heatArray, {
-    radius: 50,
-    blur: 35
+    radius: 35,
+    max: 5
   }).addTo(myMap);
-
 
 });
