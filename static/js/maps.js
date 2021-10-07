@@ -136,7 +136,7 @@ function createMap(restaurantMarkers) {
   });
 
   // Create a control for our layers, and add our overlays to it.
-  L.control.layers(baseMaps, overlayMaps).addTo(map);
+  L.control.layers(baseMaps, overlayMaps,{collapsed:false}).addTo(map);
 
   // Create a legend to display information about our map.
   var info = L.control({
