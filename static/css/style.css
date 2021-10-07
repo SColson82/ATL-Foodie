@@ -204,3 +204,9 @@ h3 {
   font-weight: bold;
   background-color: white;
 }
+
+
+/******** Find Styles ********/
+.lead i {
+  color: rgb(207, 207, 71) !important;
+}
