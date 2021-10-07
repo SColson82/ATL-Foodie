@@ -8,6 +8,7 @@ d3.json("../static/Resources/yelp_atl_restaurants.json").then(function(infoRes) 
     let cityList = Object.entries(infoRes.city);
     let stateList = Object.entries(infoRes.state);
     let zipList = Object.entries(infoRes.postal_code);
+    let catList = Object.entries(infoRes.categories);
 
     var restaurantCount = {
       FIVE_STARS: 0,
@@ -65,7 +66,11 @@ d3.json("../static/Resources/yelp_atl_restaurants.json").then(function(infoRes) 
 
       var restaurantMarker = L.marker([latitude[index][1],longitude[index][1]], {
         icon: icons[starStatusCode]
-      }).bindPopup(`<h4>${restName[index][1]}</h4><h5>Rating: ${starStatus[index][1]}</h5><h5>Address: ${addressList[index][1]}, ${cityList[index][1]}, ${stateList[index][1]} ${zipList[index][1]}</h5>`);
+      }).bindPopup(
+        `<h4>${restName[index][1]}</h4>
+        <h5>Rating: ${starStatus[index][1]}</h5>
+        <h5>Address: ${addressList[index][1]}, ${cityList[index][1]}, ${stateList[index][1]} ${zipList[index][1]}</h5>
+        <h5>Categories: ${catList[index][1]}</h5>`);
 
       
 
