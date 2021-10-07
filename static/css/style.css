@@ -132,22 +132,26 @@ h3 {
   text-align: center;
 }
 
-#restaurants.h5 {
-  font-style: italic;
+#restaurant-info p {
+  font-size: 22px !important;
+  color: black;
 }
 
 /******** Cuisines Styles ********/
 #zipSelector {
-  width: 165px;
-  margin-bottom: 20px;
+    width: 165px; 
+    margin-bottom: 20px;
 }
 
-/* map style  */
+/******** Map Styles ********/
 #map {
-  height: 100%;
-  padding: 0;
-  margin: 0;
-}
+    position: relative;
+    border: 1px solid black;
+    border-radius: 8px;
+    height: 700px;  /* or as desired */
+    width: 100%;  /* This means "100% of the width of its container" */
+};
+
 .legend {
   padding: 10px;
   font-family: Sanchez, serif;
