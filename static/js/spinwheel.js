@@ -124,24 +124,34 @@ d3.json(url).then(function (data) {
   dropdown.on("change", function () {
     if (d3.select(this).property("value") != "ignore") {
       d3.selectAll("h5").remove();
+      
 
       //get restaurants info from json file
       d3.json("static/Resources/yelp_atl_restaurants.json").then((restData) => {
         let catList = Object.entries(restData.categories);
         let nameList = Object.entries(restData.name);
         let starList = Object.entries(restData.stars);
+        let addressList = Object.entries(restData.address);
+        let cityList = Object.entries(restData.city);
+        let stateList = Object.entries(restData.state);
+        let zipList = Object.entries(restData.postal_code);
         let type = d3.select(this).property("value");
         let restList = [];
         let rateList = [];
+        let streetList = [];
+        let catList2 = [];
 
         for (let i = 0; i < catList.length; i++) {
           if (catList[i][1].includes(type)) {
             restList.push(nameList[i][1]);
-            rateList.push(starList[i][1])
+            rateList.push(starList[i][1]);
+            streetList.push(`${addressList[i][1]}, ${cityList[i][1]}, ${stateList[i][1]} ${zipList[i][1]}`);
+            catList2.push(catList[i][1]);
           }
         }
 
-        displayList = [];
+        let displayList = [];
+        let infoList = [];
 
         for (let i = 0; i < 5; i++) {
           var random = Math.floor(Math.random() * restList.length);
@@ -150,10 +160,12 @@ d3.json(url).then(function (data) {
           }
 
           displayList.push(restList[random]);
+          infoList.push([streetList[random], rateList[random], catList2[random]]);
 
           var newOption = d3.select("#restaurants")
           .append("h5")
           .text(`${restList[random]}`)
+          .attr("value", i)
           .style("color", "black");
 
           for (let j=1; j<Math.floor(rateList[random]+1); j++) {
@@ -161,11 +173,29 @@ d3.json(url).then(function (data) {
           }
 
           if (rateList[random] % 1 != 0) {
-            newOption.append("i")
-            .attr("class", "fa fa-star-half-alt");
+            var newOption = newOption.append("i").attr("class", "fa fa-star-half-alt");
           };
         }
+        var suggestions = d3.select("#restaurants").selectAll("h5");
+        var restaurantInfo = d3.select("#restaurant-info");
+  
+        suggestions.on("mouseover", function() {
+          restaurantInfo.selectAll("h2").remove();
+          
+          let index = d3.select(this).attr("value");
+          restaurantInfo
+            .append("h2").text(`${displayList[index]}`)
+            .append("p").text(`Address: ${infoList[index][0]}`)
+            .append("p").text(`Stars: ${infoList[index][1]}`)
+            .append("p").text(`Categories: ${infoList[index][2]}`);
+        });
       });
     }
   });
+
+  
+
+
 });
+
+

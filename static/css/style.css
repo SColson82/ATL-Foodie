@@ -132,8 +132,9 @@ h3 {
   text-align: center;
 }
 
-#restaurants.h5 {
-  font-style: italic;
+#restaurant-info p {
+  font-size: 22px !important;
+  color: black;
 }
 
 /******** Cuisines Styles ********/
