@@ -50,25 +50,25 @@ Here the data analysis portion of the page begins. This page represents the type
 
 <a name="ratings"></a>
 ### Ratings
-On this page, you will find a heatmap weighted by average star rating given to a restaurant by Yelp users. So the larger and darker areas of the map are areas that receive higher numbers and values of ratings whereas the areas on the map that are lighter have lower number and average star ratings. 
+On this page, you will find a heatmap weighted by average star rating given to a restaurant by Yelp users. The larger and darker areas of the map are areas with higher density and higher values of ratings, whereas the areas on the map that are lighter have lower density and average star ratings. 
 
 ![Heat](images/heat.png)
 
 <a name="map"></a>
 ### Map
-The map page is another layer of analysis based on the average star rating for each restaurant. You may view all restaurants at once or individually as the layers of the map are divided by average star rating and the marker layers are individually color coded. So if you would like, you can additionally analyze the 5 star restaurants against the one star restaurants. Additionally, if you are in a specific area and looking for a good restaurant to patronize you can choose a marker and it will give you the restaurant name, rating, address, and type.
+The map page is another layer of analysis based on the average star rating for each restaurant. You may view all restaurants at once or individually as the layers of the map are divided by average star rating and the marker layers are individually color coded. If you would like, you can analyze the 5 star restaurants against the one star restaurants and so on. Additionally, if you are in a specific area and looking for a good restaurant to patronize, you can choose a marker and it will give you the restaurant name, rating, address, and categories.
 
 ![Map](images/map.png)
 
 <a name="fortune"></a>
 ### Fortune
-Here is another fun feature of our analysis… What’s for dinner tonight? How about… Spin the Wheel!!! On this page you don’t have to answer because you can press a button and the wheel will tell you instead! Then, once you know what type of food you are eating tonight choose that option from the drop down menu and you will be provided with a list of 5 suggestions (along with their average ratings) on restaurants of that type. 
+Here is another fun feature of our analysis… What’s for dinner tonight? How about… Spin the Wheel!!! With this page, you don’t need to have an answer because you can press a button and the wheel will tell you instead! Once you know what type of food you are eating tonight, choose that option from the drop down menu, and you will be provided with a list of 5 suggestions (along with their average ratings) on restaurants of that type. Hover over a suggestion to reveal more information on that restaurant.
 
 ![Fortune](images/fortune.png)
 
 <a name="future"></a>
 ### Further Exploration
-Ok. Ok. We understand that this page is a bird’s eye view of the city and in order to make it a little friendlier to visitors of the area who might not know exactly where they are, we are working on an expansion. In the Find page, you will have an option to either drop your coordinates or the app can locate you and show you options in the area for a great meal.
+Ok. Ok. We understand that this site is a bird’s eye view of the city, and in order to make it a little friendlier to visitors of the area who might not know exactly where they are, we are working on an expansion. In the Find page, you will have an option to either drop your coordinates or the app can locate you and show you options in the area for a great meal.
 
 Additional Options for Further Exploration:
 One thing that we might like to explore in the future is a sentiment analysis of the review texts. The yelp user review dataset was filtered for potential utilization however the dataset filtered down to only Atlanta restaurant reviews was still over 400000 rows and over the Github size allowance. Even a random 10% sample received a warning when making the push. We like the idea of filtering those individual texts and recreating the heatmap based on that analysis to show which areas of Atlanta receive not only the highest staring ratings but the highest textual approvals. It would be interesting to determine which star rating receives the highest number of actual written reviews. 
