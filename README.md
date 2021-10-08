@@ -25,6 +25,8 @@ The original datasets were very, very large. In some cases, it was over 10 KB. A
 ### Extract, Transform, and Load
 The dataset was filtered by Atlanta area zip codes and then by business category to only restaurants. The category portion of the original JSON was presented as an array of arrays therefore it was necessary to filter the data multiple times as we had multiple arrangements for each category. For example: “Pizza, Restaurant” and “Restaurant, Pizza” were presented as two separate categories. Once this issue was resolved, we were able to save the data in both CSV and JSON format and also load the dataset to SQLite for Exploratory Analysis. We created a [database](static/Resources/ipynb/db.sqlite) which contains two separate tables: one for the restaurant data and another to store the different restaurant categories.
 
+![image](https://user-images.githubusercontent.com/83737584/136633371-5f87bfea-ff19-4036-ba5a-9bf952a8015c.png)
+
 <a name="tech"></a>
 ### Technologies
 * Javascript: D3, Plotly, Leaflet
