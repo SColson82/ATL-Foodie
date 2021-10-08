@@ -29,7 +29,7 @@ function init() {
         dropdown.append("option").text(zipCode).property("value", zipCode);
       });
 
-      dropdownChange([30032], "30032");
+      dropdownChange([30002], "30002");
       createAllBar();
     });
 };
