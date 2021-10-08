@@ -36,7 +36,7 @@ The dataset was filtered by Atlanta area zip codes and then by business category
 * Additional: CSS, HTML, Python, Pandas, Bootstrap
 
 <a name="site"></a>
-## The Website
+## [The Website](https://atl-foodie-page.herokuapp.com)
 
 <a name="home"></a>
 ### ATL-Foodie Landing Page
@@ -45,31 +45,31 @@ This page is our “First Impression” page. Designed to give you the flair of 
 ![Home](images/home.png)
 
 <a name="cuisines"></a>
-### Cuisines
+### [Cuisines](https://atl-foodie-page.herokuapp.com/cuisines)
 Here the data analysis portion of the page begins. This page represents the types of food that Atlanta offers. There are three visualizations on this page. The first represents the count of each cuisine type in a given zip code set, the second represents the top ten cuisine types for the same given zip code set, and the final chart (at the bottom of the page) represents the cuisines for all of Atlanta listed in descending order of how many there are. To add to this data exploration, you may choose any one or combination (up to 10) zip codes from the drop down menu at the top of the page. 
 
 ![Cuisines](images/cuisines.png)
 
 <a name="ratings"></a>
-### Ratings
+### [Ratings](https://atl-foodie-page.herokuapp.com/ratings)
 On this page, you will find a heatmap weighted by average star rating given to a restaurant by Yelp users. The larger and darker areas of the map are areas with higher density and higher values of ratings, whereas the areas on the map that are lighter have lower density and average star ratings. 
 
 ![Heat](images/heat.png)
 
 <a name="map"></a>
-### Map
+### [Map](https://atl-foodie-page.herokuapp.com/map)
 The map page is another layer of analysis based on the average star rating for each restaurant. You may view all restaurants at once or individually as the layers of the map are divided by average star rating and the marker layers are individually color coded. If you would like, you can analyze the 5 star restaurants against the one star restaurants and so on. Additionally, if you are in a specific area and looking for a good restaurant to patronize, you can choose a marker and it will give you the restaurant name, rating, address, and categories.
 
 ![Map](images/map.png)
 
 <a name="fortune"></a>
-### Fortune
+### [Fortune](https://atl-foodie-page.herokuapp.com/fortune)
 Here is another fun feature of our analysis… What’s for dinner tonight? How about… Spin the Wheel!!! With this page, you don’t need to have an answer because you can press a button and the wheel will tell you instead! Once you know what type of food you are eating tonight, choose that option from the drop down menu, and you will be provided with a list of 5 suggestions (along with their average ratings) on restaurants of that type. Hover over a suggestion to reveal more information on that restaurant.
 
 ![Fortune](images/fortune.png)
 
 <a name="future"></a>
-### Further Exploration
+### [Further Exploration](https://atl-foodie-page.herokuapp.com/find)
 Ok. Ok. We understand that this site is a bird’s eye view of the city, and in order to make it a little friendlier to visitors of the area who might not know exactly where they are, we are working on an expansion. In the Find page, you will have an option to either drop your coordinates or the app can locate you and show you options in the area for a great meal.
 
 Additional Options for Further Exploration:
