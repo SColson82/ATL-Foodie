@@ -39,7 +39,7 @@ The dataset was filtered by Atlanta area zip codes and then by business category
 ## [The Website](https://atl-foodie-page.herokuapp.com)
 
 <a name="home"></a>
-### ATL-Foodie Landing Page
+### [ATL-Foodie Landing Page](https://atl-foodie-page.herokuapp.com)
 This page is our “First Impression” page. Designed to give you the flair of Atlanta and easy to use. Each Icon (Cuisines, Ratings, Map, Fortune, and Find) represents a link to a new page. If you get lost and need to go back to the beginning (or if you love it so much you want to see it again), just click the ATL Foodie icon on any page and it will bring you back here. 
 
 ![Home](images/home.png)
