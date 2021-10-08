@@ -1,4 +1,4 @@
-# ATL-Foodie: What’s for Dinner Tonight in Atlanta?
+# [ATL-Foodie](https://atl-foodie-page.herokuapp.com): What’s for Dinner Tonight in Atlanta?
 
 ## Table of Contents
 1. [Source](#source)
