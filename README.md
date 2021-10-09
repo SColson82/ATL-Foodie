@@ -35,7 +35,7 @@ The dataset was filtered by Atlanta area zip codes and then by business category
 * JS Plug-Ins: Extra-Markers, Simpleheat
 * Framework: Jinja
 * Deployment: Heroku
-* Additional: CSS, HTML, Python, Pandas, Bootstrap
+* Additional: CSS, HTML, Python, Pandas, Bootstrap, SQLite, JSON
 
 <a name="site"></a>
 ## [The Website](https://atl-foodie-page.herokuapp.com)
