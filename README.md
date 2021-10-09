@@ -33,8 +33,8 @@ The dataset was filtered by Atlanta area zip codes and then by business category
 ### Technologies
 * Javascript: D3, Plotly, Leaflet
 * JS Plug-Ins: Extra-Markers, Simpleheat
-* Framework: Jinja
-* Deployment: Heroku, Flask
+* Framework: Jinja, Flask
+* Deployment: Heroku
 * Additional: CSS, HTML, Python, Pandas, Bootstrap, SQLite, JSON
 
 <a name="site"></a>
