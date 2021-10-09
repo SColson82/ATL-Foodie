@@ -1,5 +1,7 @@
 # [ATL-Foodie](https://atl-foodie-page.herokuapp.com): What’s for Dinner Tonight in Atlanta?
 
+### Team Members: Marius Clark, Sharon Colson, Karina Hutula, Marie Prosper
+
 ## Table of Contents
 1. [Source](#source)
 2. [Dataset](#data)
