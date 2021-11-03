@@ -80,3 +80,10 @@ One thing that we might like to explore in the future is a sentiment analysis of
 Also, there was a yelp dataset named tips which consisted of messages such as: “Try the secret chicken sandwich.” Or “Don’t order the pork.” We would love to explore adding these tips to the map markers so that not only can you find a five star Vietnamese restaurant in your area but you can also get a tip on how or what to order for the best experience. 
 
 ![Find](images/find.png)
+
+<hr>
+
+Contact:
+
+* https://www.linkedin.com/in/sharon-colson-515222210/
+* sharon.colson@gmail.com
