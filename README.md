@@ -85,12 +85,17 @@ Also, there was a yelp dataset named tips which consisted of messages such as: â
 
 Contacts:
 <hr>
-Sharon Colson
 
+Sharon Colson:
 * https://www.linkedin.com/in/sharon-colson-515222210/
 * sharon.colson@gmail.com
 <hr>
-Karina Hutula
 
+Karina Hutula
 * https://www.linkedin.com/in/khutula/
 * https://github.com/khutula
+<hr>
+
+Marie Prosper:
+* https://marieprosper77.github.io/
+* marieprosper77@gmail.com
